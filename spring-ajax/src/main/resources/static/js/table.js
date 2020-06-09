@@ -58,7 +58,7 @@ $(document).on("click", ".editUser", function () {
         type: 'POST',
         url: '/api/admin/update',
         data: formData,
-        timeout: 3000,
+        timeout: 5000,
         success: function () {
             getAllUsers();
         },
@@ -83,7 +83,7 @@ $(document).on("click", ".delete", function () {
             type: 'POST',
             url: '/api/admin/delete',
             data: {id: $('#id').val()},
-            timeout: 3000,
+            timeout: 5000,
             success: function () {
                 getAllUsers();
             },

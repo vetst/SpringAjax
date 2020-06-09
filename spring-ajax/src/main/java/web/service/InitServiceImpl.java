@@ -1,7 +1,6 @@
 package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
@@ -25,6 +24,8 @@ public class InitServiceImpl implements InitService {
     @Override
     public void addAdminAndUser() {
         if (!userDao.isNotReg("admin@mail.com")) {
+            userDao.addRole(new Role("ADMIN"));
+            userDao.addRole(new Role("USER"));
             Set<Role> admin = new HashSet<>();
             admin.add(new Role("ADMIN"));
             admin.add(new Role("USER"));

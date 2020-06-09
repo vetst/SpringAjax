@@ -16,7 +16,5 @@ public interface UserService {
 
     public List<User> getAllUser();
 
-    public Set<Role> getRoleForUser(String role);
-
     public String ifPasswordNull(Long id, String password);
 }
