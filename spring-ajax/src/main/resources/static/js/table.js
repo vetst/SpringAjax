@@ -58,11 +58,11 @@ $(document).on("click", ".editUser", function () {
         type: 'POST',
         url: '/api/admin/update',
         data: formData,
-        timeout: 5000,
+        timeout: 3000,
         success: function () {
             getAllUsers();
         },
-        error : function (data) {
+        error: function (data) {
             console.log('Error', data);
         }
     });
@@ -77,20 +77,19 @@ $(document).on("click", ".delete", function () {
     $('#email').val(user.email);
     $('#id').val(user.id);
     $('#age').val(user.age);
-
-    $(document).on("click", ".deleteUser", function () {
-        $.ajax({
-            type: 'POST',
-            url: '/api/admin/delete',
-            data: {id: $('#id').val()},
-            timeout: 5000,
-            success: function () {
-                getAllUsers();
-            },
-            error : function (data) {
-                console.log('Error', data);
-            }
-        });
+})
+$(document).on("click", ".deleteUser", function () {
+    $.ajax({
+        type: 'POST',
+        url: '/api/admin/delete',
+        data: {id: $('#id').val()},
+        timeout: 3000,
+        success: function () {
+            getAllUsers();
+        },
+        error: function (data) {
+            console.log('Error', data);
+        }
     });
 });
 
@@ -107,7 +106,7 @@ $('.addUser').click(function () {
             $('.formAddUser')[0].reset();
             getAllUsers();
         },
-        error : function (data) {
+        error: function (data) {
             console.log('Error', data);
         }
     });
@@ -115,19 +114,20 @@ $('.addUser').click(function () {
 
 //Информация о пользователе в зависимости от роли
 $(document).ready(getUser());
+
 function getUser() {
     $("#userTable").empty();
     $.ajax({
         type: 'GET',
         url: '/api/user/getUser',
         timeout: 3000,
-        error: function() {
+        error: function () {
             $('#blockMenuforUser').hide();
         },
         success: function (data) {
             console.log(data);
             $.each(data, function (i, user) {
-                if(user.roles == "USER") {
+                if (user.roles == "USER") {
                     $('#menuUser').trigger('click');
                     $('#main2').trigger('click');
                     $('#blockMenuforAdmin').hide();

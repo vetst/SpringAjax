@@ -27,12 +27,12 @@ public class InitServiceImpl implements InitService {
             userDao.addRole(new Role("ADMIN"));
             userDao.addRole(new Role("USER"));
             Set<Role> admin = new HashSet<>();
-            admin.add(new Role("ADMIN"));
-            admin.add(new Role("USER"));
+            admin.add(userDao.getRoleByName("ADMIN"));
+            admin.add(userDao.getRoleByName("USER"));
             userDao.addUser(new User("Иван", "Иванов", "admin", "admin@mail.com", 35, admin));
 
             Set<Role> user = new HashSet<>();
-            user.add(new Role("USER"));
+            user.add(userDao.getRoleByName("USER"));
             userDao.addUser(new User("Петр", "Петров", "user", "user@mail.com", 25, user));
         }
     }

@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userMayBy.orElseThrow(IllegalAccessError::new);
     }
 
-    @Transactional
+
     @Override
     public String ifPasswordNull(Long id, String password) {
         if (password.trim().length() == 0) {
